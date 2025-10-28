@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luiz Henrique Tozi - Professional Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+
+        nav ul li {
+            margin: 0 1.5rem;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #0066cc;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(135deg, rgba(0, 102, 204, 0.8), rgba(51, 51, 51, 0.7)), url('hero.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-content p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1.2s ease;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: #0066cc;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: transform 0.3s, background 0.3s;
+            animation: fadeInUp 1.4s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            background: #0052a3;
+        }
+
+        /* Sections */
+        section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            color: #0066cc;
+        }
+
+        /* About Section */
+        .about-content {
+            display: flex;
+            gap: 3rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .about-text p {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        /* Experience Cards */
+        .experience-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .card h3 {
+            color: #0066cc;
+            margin-bottom: 1rem;
+        }
+
+        .card p {
+            margin-bottom: 0.5rem;
+            color: #666;
+        }
+
+        .card .period {
+            font-style: italic;
+            color: #999;
+            font-size: 0.9rem;
+        }
+
+        /* Skills Section */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .skill-category {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 4px solid #0066cc;
+        }
+
+        .skill-category h4 {
+            color: #0066cc;
+            margin-bottom: 1rem;
+        }
+
+        .skill-category ul {
+            list-style: none;
+        }
+
+        .skill-category ul li {
+            padding: 0.3rem 0;
+            color: #666;
+        }
+
+        .skill-category ul li:before {
+            content: "✓ ";
+            color: #0066cc;
+            font-weight: bold;
+        }
+
+        /* What I Bring Section */
+        .bring-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .bring-item {
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 10px;
+        }
+
+        .bring-item .icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .bring-item h4 {
+            color: #0066cc;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: #f8f9fa;
+        }
+
+        .contact-container {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 2rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            text-decoration: none;
+            color: #333;
+            transition: transform 0.3s;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-3px);
+        }
+
+        .contact-item .icon {
+            font-size: 2rem;
+            color: #0066cc;
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .hero-content p {
+                font-size: 1.2rem;
+            }
+
+            nav ul li {
+                margin: 0.5rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#international">International</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Luiz Henrique Tozi</h1>
+            <p>Logistics Student | International Experience | Team Leader</p>
+            <a href="#contact" class="cta-button">Get in Touch</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2>About Me</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <p>I'm a Logistics student with 2+ years of hands-on experience in commercial operations, team leadership, and inventory management. Currently expanding my international perspective through collaborative academic projects in Slovakia and previous exchange experience in Portugal.</p>
+                <p>Passionate about bridging cultures and building meaningful connections in multicultural environments. I combine analytical thinking with strong interpersonal skills to deliver results while fostering inclusive team dynamics.</p>
+                <p>Eager to bring fresh ideas, adaptability, and a global mindset to international opportunities.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- International Experience -->
+    <section id="international">
+        <h2>International Experience</h2>
+        <div class="experience-grid">
+            <div class="card">
+                <h3>🇸🇰 COIL International Project</h3>
+                <p class="period">Technical University of Kosice, Slovakia | Oct 2025 - Nov 2025</p>
+                <p>Engaging in cross-border collaboration focused on entrepreneurship and practical business applications. Working in mixed international teams to develop innovative solutions with global perspective.</p>
+            </div>
+            <div class="card">
+                <h3>🇵🇹 International Mobility Program</h3>
+                <p class="period">Polytechnic Institute of Bragança, Portugal | Jan 2024 - Aug 2024</p>
+                <p>Vice-President of the Brazilian Students Football Confederation. Led recruitment and organization efforts for 50+ students to participate in the IPB World Cup. Enhanced cultural empathy and cross-cultural communication.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Professional Experience -->
+    <section id="experience">
+        <h2>Professional Experience</h2>
+        <div class="experience-grid">
+            <div class="card">
+                <h3>Sales Representative</h3>
+                <p class="period">Pousada Bosque das Araucárias | Feb 2023 - Jul 2025</p>
+                <p>Managed B2C sales with focus on service bundling. Achieved outstanding customer ratings: 9.0 on Booking.com and 9.6 staff evaluation. Trained team members and organized B2B events with strategic partners.</p>
+            </div>
+            <div class="card">
+                <h3>Inventory Control Intern</h3>
+                <p class="period">Farmácia Espírito Santo | Feb 2025 - Sep 2025</p>
+                <p>Managed inventory through ERP system using FEFO methodology. Recognized as the most proficient intern in ERP operations. Reduced task completion time by 50% through proactive training and efficient workflow organization.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education -->
+    <section id="education">
+        <h2>Education</h2>
+        <div class="experience-grid">
+            <div class="card">
+                <h3>Bachelor of Technology in Logistics</h3>
+                <p class="period">Fatec São José dos Campos | Mar 2021 - Dec 2025 (expected)</p>
+                <p>Focus on supply chain management, transportation, warehousing, and logistics technologies.</p>
+            </div>
+            <div class="card">
+                <h3>High School Diploma</h3>
+                <p class="period">Instituto São José | Mar 2019 - Dec 2021</p>
+                <p>Completed secondary education with strong foundation in sciences and mathematics.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Academic Projects -->
+    <section id="projects">
+        <h2>Academic Projects</h2>
+        <div class="experience-grid">
+            <div class="card">
+                <h3>🤖 AI in Route Optimization</h3>
+                <p>Developed AI models for logistics optimization, cost reduction, and operational efficiency improvement.</p>
+            </div>
+            <div class="card">
+                <h3>🧠 Neuroscience in Heavy Items Logistics</h3>
+                <p>Neuroergonomic approach to process optimization and operational safety in heavy cargo handling.</p>
+            </div>
+            <div class="card">
+                <h3>📚 Neurophysiology of Learning in STEM</h3>
+                <p>Research on physical activity interventions' effects on cognition and engagement in technical fields.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills">
+        <h2>Skills & Competencies</h2>
+        <div class="skills-container">
+            <div class="skill-category">
+                <h4>Languages</h4>
+                <ul>
+                    <li>Portuguese (Native)</li>
+                    <li>English (B1 TOEIC Certified)</li>
+                    <li>Spanish (Basic)</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <h4>Technical Skills</h4>
+                <ul>
+                    <li>ERP Systems</li>
+                    <li>Microsoft Excel</li>
+                    <li>Power BI</li>
+                    <li>Jira</li>
+                    <li>Booking.com & Airbnb</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <h4>Soft Skills</h4>
+                <ul>
+                    <li>Cross-Cultural Communication</li>
+                    <li>Team Leadership</li>
+                    <li>Problem-Solving</li>
+                    <li>Adaptability</li>
+                    <li>Collaboration</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- What I Bring -->
+    <section id="bring">
+        <h2>What I Bring to the Table</h2>
+        <div class="bring-grid">
+            <div class="bring-item">
+                <div class="icon">🌍</div>
+                <h4>Global Mindset</h4>
+                <p>Exchange experiences shaped my ability to adapt and work across cultures</p>
+            </div>
+            <div class="bring-item">
+                <div class="icon">🤝</div>
+                <h4>People-Oriented</h4>
+                <p>I thrive on building genuine connections and collaborative environments</p>
+            </div>
+            <div class="bring-item">
+                <div class="icon">📊</div>
+                <h4>Analytical & Creative</h4>
+                <p>Comfortable with data analysis while bringing innovative approaches</p>
+            </div>
+            <div class="bring-item">
+                <div class="icon">🚀</div>
+                <h4>Growth-Focused</h4>
+                <p>Constantly seeking opportunities to learn and make positive impact</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <h2>Get in Touch</h2>
+        <div class="contact-container">
+            <a href="mailto:luizhenriquetozi@gmail.com" class="contact-item">
+                <span class="icon">📧</span>
+                <div>
+                    <strong>Email</strong>
+                    <p>luizhenriquetozi@gmail.com</p>
+                </div>
+            </a>
+            <a href="https://wa.me/5512997993081" target="_blank" class="contact-item">
+                <span class="icon">📱</span>
+                <div>
+                    <strong>WhatsApp</strong>
+                    <p>+55 12 99799-3081</p>
+                </div>
+            </a>
+            <a href="http://www.linkedin.com/in/luizhenriquetozi" target="_blank" class="contact-item">
+                <span class="icon">💼</span>
+                <div>
+                    <strong>LinkedIn</strong>
+                    <p>/in/luizhenriquetozi</p>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Luiz Henrique Tozi. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            });
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards
+        document.querySelectorAll('.card, .bring-item, .skill-category').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+
+        // Active navigation highlight
+        window.addEventListener('scroll', () => {
+            let current = '';
+            const sections = document.querySelectorAll('section');
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            document.querySelectorAll('nav a').forEach(a => {
+                a.classList.remove('active');
+                if (a.getAttribute('href').slice(1) === current) {
+                    a.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
